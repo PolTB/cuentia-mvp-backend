@@ -26,6 +26,8 @@ class DatabaseClient:
             "theme": story_data.get("theme"),
             "custom_elements": story_data.get("custom_elements"),
             "created_at": datetime.utcnow().isoformat()
+                        "image_url": story_data.get("image_url"),
+            "image_prompt": story_data.get("image_prompt"),
         }
         
         self.client.table("stories").insert(story_record).execute()
@@ -43,6 +45,10 @@ class DatabaseClient:
             "cost_usd": metrics["cost_usd"],
             "model_used": metrics["model_used"],
             "moderation_flagged": metrics.get("moderation_flagged", False),
+                        # Image generation metrics (optional)
+            "image_generation_time_seconds": metrics.get("image_generation_time_seconds"),
+            "image_model_used": metrics.get("image_model_used"),
+            "image_cost_usd": metrics.get("image_cost_usd"),
             "created_at": datetime.utcnow().isoformat()
         }
         
