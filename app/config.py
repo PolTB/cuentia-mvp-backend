@@ -11,6 +11,9 @@ class Settings(BaseSettings):
     openai_model_fallback: str = "gpt-3.5-turbo"
     openai_timeout: int = 45
     openai_max_retries: int = 1
+        
+    # DALL-E
+    dalle_timeout: int = 60  # Longer timeout for image generation
     
     # Supabase
     supabase_url: str
