@@ -39,6 +39,10 @@ class GenerationMetrics(BaseModel):
     cost_usd: float
     model_used: str
     moderation_flagged: bool = False
+        # Image generation metrics (optional)
+    image_generation_time_seconds: Optional[float] = None
+    image_model_used: Optional[str] = None
+    image_cost_usd: Optional[float] = None
 
 
 class StoryResponse(BaseModel):
@@ -47,6 +51,8 @@ class StoryResponse(BaseModel):
     content: str
     child_name: str
     age_range: str
+        image_url: Optional[str] = None
+    image_prompt: Optional[str] = None
     metrics: GenerationMetrics
     created_at: datetime
     success: bool = True
